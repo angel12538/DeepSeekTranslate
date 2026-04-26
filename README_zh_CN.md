@@ -21,7 +21,7 @@
 [DeepSeek]
 Endpoint=https://api.deepseek.com/chat/completions
 ApiKey=sk-xxxxxxx
-Model=deepseek-chat
+Model=deepseek-v4-flash
 Temperature=1.3
 MaxTokensMode=Dynamic
 StaticMaxTokens=1024
@@ -38,6 +38,7 @@ MaxRetries=1
 UseThreadPool=True
 MinThreadCount=
 MaxThreadCount=
+DisableThinking=True
 Debug=False
 ```
 
@@ -50,7 +51,7 @@ Debug=False
   - 默认值：`YOUR_API_KEY_HERE`
 
 - **Model**：传递给API的`model`参数
-  - 默认值：`deepseek-chat`
+  - 默认值：`deepseek-v4-flash`
 
 - **Temperature**：
   - 默认值：`1.3`
@@ -120,6 +121,10 @@ Debug=False
 - **MaxThreadCount**：
   - 默认值：空
   - 说明：线程池的最大线程数，为空或解析失败时使用 `Environment.ProcessorCount * 4`
+
+- **DisableThinking**：
+  - `False`（默认）：不禁用思考模式（API 默认启用）
+  - `True`：禁用思考模式，在请求中添加 `"thinking":{"type":"disabled"}`
 
 - **Debug**：
   - `False`（默认）：禁用调试模式

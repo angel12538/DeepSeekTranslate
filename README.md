@@ -21,7 +21,7 @@ In this case, you can set `Endpoint` to your Nginx server address and set `Corou
 [DeepSeek]
 Endpoint=https://api.deepseek.com/chat/completions
 ApiKey=sk-xxxxxxx
-Model=deepseek-chat
+Model=deepseek-v4-flash
 Temperature=1.3
 MaxTokensMode=Dynamic
 StaticMaxTokens=1024
@@ -38,6 +38,7 @@ MaxRetries=1
 UseThreadPool=True
 MinThreadCount=
 MaxThreadCount=
+DisableThinking=True
 Debug=False
 ```
 
@@ -50,7 +51,7 @@ Debug=False
   - Default: `YOUR_API_KEY_HERE`
 
 - **Model**: The `model` parameter passed to the API
-  - Default: `deepseek-chat`
+  - Default: `deepseek-v4-flash`
 
 - **Temperature**:
   - Default: `1.3`
@@ -120,6 +121,10 @@ Debug=False
 - **MaxThreadCount**:
   - Default: Empty
   - Description: Maximum thread count for the thread pool, if empty or parsing fails, `Environment.ProcessorCount * 4` is used
+
+- **DisableThinking**:
+  - `False` (default): Do not disable thinking mode (API default is enabled)
+  - `True`: Disable thinking mode, adds `"thinking":{"type":"disabled"}` to the request
 
 - **Debug**:
   - `False` (default): Disable debug mode

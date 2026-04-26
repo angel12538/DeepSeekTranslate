@@ -16,6 +16,7 @@ namespace DeepSeekTranslate
             if (_addEndingAssistantPrompt) { prompts.Add(new PromptMessage("assistant", "我完全理解了翻译的要求与原则，我将遵循您的指示进行翻译，以下是对原文的翻译：")); }
             prompts.ForEach(p => { sb.Append($"{{\"role\":\"{JsonHelper.Escape(p.Role)}\",\"content\":\"{JsonHelper.Escape(p.Content)}\"}},"); });
             sb.Remove(sb.Length - 1, 1);
+            var thinkingStr = _disableThinking ? ",\"thinking\":{\"type\":\"disabled\"}" : string.Empty;
             var retStr =
                 $"{{\"messages\":[{sb}]," +
                 $"\"model\":\"{_model}\"," +
@@ -30,7 +31,7 @@ namespace DeepSeekTranslate
                 $"\"tools\":null," +
                 $"\"tool_choice\":\"none\"," +
                 $"\"logprobs\":false," +
-                $"\"top_logprobs\":null}}";
+                $"\"top_logprobs\":null{thinkingStr}}}";
             if (_debug) { XuaLogger.AutoTranslator.Debug($"DeepSeekTranslate.MakeRequestStr: retStr={{{retStr}}}"); }
             return retStr;
         }

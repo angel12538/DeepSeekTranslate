@@ -34,6 +34,7 @@ namespace DeepSeekTranslate
         private bool _useThreadPool;
         private int _minThreadCount;
         private int _maxThreadCount;
+        private bool _disableThinking;
         private bool _debug;
 
         public string Id => "DeepSeekTranslate";

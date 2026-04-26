@@ -4,7 +4,7 @@ namespace DeepSeekTranslate.Tests
 {
     public abstract class BaseErrorHandlingTests
     {
-        protected DeepSeekTranslateEndpoint CreateEndpoint(int maxRetries = 0, bool useThreadPool = true, bool batchTranslate = false)
+        protected DeepSeekTranslateEndpoint CreateEndpoint(int maxRetries = 0, bool useThreadPool = true, bool batchTranslate = false, bool disableThinking = false)
         {
             var endpoint = new DeepSeekTranslateEndpoint();
             SetPrivateField(endpoint, "_endpoint", "https://api.deepseek.com/chat/completions");
@@ -19,6 +19,7 @@ namespace DeepSeekTranslate.Tests
             SetPrivateField(endpoint, "_model", "deepseek-chat");
             SetPrivateField(endpoint, "_temperature", 0.3);
             SetPrivateField(endpoint, "_addEndingAssistantPrompt", true);
+            SetPrivateField(endpoint, "_disableThinking", disableThinking);
             return endpoint;
         }
 
