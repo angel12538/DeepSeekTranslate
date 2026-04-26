@@ -51,7 +51,7 @@ namespace DeepSeekTranslate
                     }
                     else
                     {
-                        trJsonStrBuilder.Append($"\"{validLineCount}\":\"{lines[i]}\",");
+                        trJsonStrBuilder.Append($"\"{validLineCount}\":\"{JsonHelper.Escape(lines[i])}\",");
                         lineNumberDict.Add(i, validLineCount);
                         validLineCount++;
                     }

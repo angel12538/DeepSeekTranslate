@@ -8,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using XUnity.AutoTranslator.Plugin.Core.Endpoints;
+using XUnity.AutoTranslator.Plugin.Core.Utilities;
 using XUnity.Common.Logging;
 
 namespace DeepSeekTranslate
@@ -23,7 +24,7 @@ namespace DeepSeekTranslate
                 // create prompt
                 var userTrPrompt = $"###这是你接下来的翻译任务，原文文本如下\n" +
                     $"```json\n" +
-                    $"{{\"0\": \"{line}\"}}\n" +
+                    $"{{\"0\": \"{JsonHelper.Escape(line)}\"}}\n" +
                     $"```";
                 var prompt = MakeRequestStr(new List<PromptMessage>
                 {
