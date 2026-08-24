@@ -14,6 +14,11 @@ namespace DeepSeekTranslate
     {
         private string FixLanguage(string lang)
         {
+            if (string.Equals(lang, "auto", StringComparison.OrdinalIgnoreCase))
+            {
+                return "auto";
+            }
+            
             switch (lang)
             {
                 case "zh-CN":
