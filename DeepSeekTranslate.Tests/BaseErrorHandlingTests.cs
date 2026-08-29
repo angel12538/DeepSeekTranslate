@@ -28,5 +28,11 @@ namespace DeepSeekTranslate.Tests
             var field = typeof(DeepSeekTranslateEndpoint).GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
             field.SetValue(obj, value);
         }
+
+        protected T GetPrivateField<T>(object obj, string fieldName)
+        {
+            var field = typeof(DeepSeekTranslateEndpoint).GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
+            return (T)field.GetValue(obj);
+        }
     }
 } 
